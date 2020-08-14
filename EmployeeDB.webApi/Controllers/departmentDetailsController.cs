@@ -40,8 +40,12 @@ namespace EmployeeDB.webApi.Controllers
 
         // PUT: api/departmentDetails/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutdepartmentDetail(int id, departmentDetail departmentDetail)
+        [HttpPatch]
+        [HttpPut]
+        public IHttpActionResult PutdepartmentDetail(departmentDetail departmentDetail)
         {
+            int id = departmentDetail.deptId;
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -75,6 +79,7 @@ namespace EmployeeDB.webApi.Controllers
 
         // POST: api/departmentDetails
         [ResponseType(typeof(departmentDetail))]
+        [HttpPost]
         public IHttpActionResult PostdepartmentDetail(departmentDetail departmentDetail)
         {
             if (!ModelState.IsValid)

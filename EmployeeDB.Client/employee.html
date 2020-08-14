@@ -10,27 +10,59 @@
 
 </head>
 
-<body ng-controller = "employeeDetailsController">
+<body ng-controller="employeeDetailsController">
 
-    <h3>Welcome to Employee Page</h3>
+    <div class="container">
 
-     
+        <h3>Welcome to Employee Page :-</h3>
 
-    <p ng-if="employeeDetails.count==0">No Employees found</p>
 
-    <table border="1px solid black">
-        <tr>
-            <td>EmpId</td>
-            <td>EmpName</td>
-            <td>EmpSalary</td>
-            <td>EmpPlace</td>
-        </tr>
-        <tr ng-repeat="employee in employeeDetails">
-            <td>{{employee.empId}}</td>
-            <td>{{employee.empName}}</td>
-            <td>{{employee.empSalary}}</td>
-            <td>{{employee.empPlace}}</td>
-        </tr>
-    </table>
+
+        <p ng-if="employeeDetails.count==0">No Employees found</p>
+
+        <table border="1px solid black" class="table table-striped">
+            <tr class="w3-light-grey">
+                <td>EmpId</td>
+                <td>EmpName</td>
+                <td>EmpSalary</td>
+                <td>EmpPlace</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr ng-repeat="employee in employeeDetails">
+                <td>{{employee.empId}}</td>
+                <td>{{employee.empName}}</td>
+                <td>{{employee.empSalary}}</td>
+                <td>{{employee.empPlace}}</td>
+                <td><input type="button" id="Delete" value="Delete" ng-click="dltEmployee(employee.empId)" /></td>
+                <td><input type="button" id="Edit" value="Edit" ng-click="EmptGetById(employee.empId)" /></td>
+            </tr>
+        </table>
+
+    </div>
+    <br /><br />
+
+    <h3>Employee Registration Form</h3>
+    <div>
+        <form>
+            Employee Id : <input type="text" ng-model="EmployeeForm.empId" placeholder="Enter Employee ID" /><br /><br />
+            Employee Name : <input type="text" ng-model="EmployeeForm.empName" placeholder="Enter Employee Name" /><br /><br />
+            Employee Salary : <input type="text" ng-model="EmployeeForm.empSalary" placeholder="Enter Salary" /><br /><br />
+            Employee Place : <input type="text" ng-model="EmployeeForm.empPlace" placeholder="Enter Place" /><br /><br />
+            <input type="button" ng-click="InsertEmp(EmployeeForm)" value="InsertEmployee" />
+        </form>
+    </div>
+    <br /><br />
+    <h3>Edit EmployeeDetails</h3>
+    <div>
+        <form>
+            Employee Id : <span> {{EmployeeDetails.empId}}</span><br /><br />
+            Employee Name : <input type="text" ng-model="EmployeeDetails.empName" /><br /><br />
+            Employee Salary : <input type="text" ng-model="EmployeeDetails.empSalary" /><br /><br />
+            Employee Place : <input type="text" ng-model="EmployeeDetails.empPlace" /><br /><br />
+
+            <input type="button" ng-click="UpdateEmpDetails(EmployeeDetails)" value="Update" />
+        </form>
+    </div>
 </body>
 </html>

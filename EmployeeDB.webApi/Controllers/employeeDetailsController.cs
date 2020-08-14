@@ -41,8 +41,12 @@ namespace EmployeeDB.webApi.Controllers
 
         // PUT: api/employeeDetails/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutemployeeDetail(int id, employeeDetail employeeDetail)
+        [HttpPatch]
+        [HttpPut]
+        public IHttpActionResult PutemployeeDetail(employeeDetail employeeDetail)
         {
+            int id = employeeDetail.empId;
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

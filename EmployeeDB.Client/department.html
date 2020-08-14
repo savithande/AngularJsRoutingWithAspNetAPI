@@ -12,25 +12,51 @@
 
 <body ng-controller="departmentDetailsController">
 
-    <h3>Welcome to Employee Page</h3>
+    <div class="container">
+        <h3>Welcome to Employee Page</h3>
+        <p ng-if="departmentDetails.count==0">No Employees found</p>
 
+        <table border="1px solid black" class="table table-striped">
+            <tr class="w3-light-grey">
+                <td>DeptId</td>
+                <td>DeptName</td>
+                <td>NumOfEmployees</td>
+                <td></td>
+                <td></td>
 
+            </tr>
+            <tr ng-repeat="department in departmentDetails">
+                <td>{{department.deptId}}</td>
+                <td>{{department.deptName}}</td>
+                <td>{{department.numOfEmployees}}</td>
+                <td><input type="button" id="Delete" value="Delete" ng-click="dltEmployee(department.deptId)" /></td>
+                <td><input type="button" id="Edit" value="Edit" ng-click="DeptGetById(department.deptId)" /></td>
 
-    <p ng-if="departmentDetails.count==0">No Employees found</p>
+            </tr>
+        </table>
+    </div>
+    <br /><br />
+    <h3>Add DepartmentDetails</h3>
+    <div>
+        <form>
+            department Id : <input type="text" ng-model="departmentForm.deptId" placeholder="Enter department ID" /><br /><br />
+            department Name : <input type="text" ng-model="departmentForm.deptName" placeholder="Enter department Name" /><br /><br />
+            Number of Employees : <input type="text" ng-model="departmentForm.numOfEmployees" placeholder="No of Employees" /><br /><br />
 
-    <table border="1px solid black">
-        <tr>
-            <td>DeptId</td>
-            <td>DeptName</td>
-            <td>NumOfEmployees</td>
-          
-        </tr>
-        <tr ng-repeat="department in departmentDetails">
-            <td>{{department.deptId}}</td>
-            <td>{{department.deptName}}</td>
-            <td>{{department.numOfEmployees}}</td>
-             
-        </tr>
-    </table>
+            <input type="button" ng-click="InsertDept(departmentForm)" value="Insertdepartment" />
+        </form>
+    </div>
+
+    <br /><br />
+    <h3>edit DepartmentDetails</h3>
+    <div>
+        <form>
+            department Id : <span> {{DepartmentDetails.deptId}}</span><br /><br />
+            department Name : <input type="text" ng-model="DepartmentDetails.deptName" /><br /><br />
+            Number of Employees : <input type="text" ng-model="DepartmentDetails.numOfEmployees" /><br /><br />
+
+            <input type="button" ng-click="UpdateDeptDetails(DepartmentDetails)" value="Update" />
+        </form>
+    </div>
 </body>
 </html>

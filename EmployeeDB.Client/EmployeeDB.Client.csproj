@@ -847,6 +847,7 @@
     <Content Include="Scripts\test-bundles\angular-route.js" />
     <Content Include="Scripts\test-bundles\angular-sanitize.js" />
     <Content Include="Scripts\test-bundles\angular-touch.js" />
+    <Content Include="stylesheet\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
